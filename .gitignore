@@ -1,0 +1,71 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+.venv/
+venv/
+env/
+ENV/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# C/C++ build files
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Compiled binaries / objects
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+
+# Generated test files
+generated/
+out/
+output/
+reports/
+
+# Logs
+*.log
+
+# Sanitizer / coverage artifacts
+*.gcda
+*.gcno
+*.gcov
+asan.log*
+ubsan.log*
+lsan.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
