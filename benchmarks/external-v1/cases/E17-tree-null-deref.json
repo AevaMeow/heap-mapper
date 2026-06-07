@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"},
+      {"name": "parent", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "node",
+  "target_function": "create_tree_empty_iteration",
+  "path": [
+    {"op": "constraint", "expr": "node == NULL"},
+    {"op": "assign", "lhs": "node.parent", "rhs": "NULL"}
+  ]
+}

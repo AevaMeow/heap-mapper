@@ -1,0 +1,23 @@
+{
+  "structure": {
+    "name": "Node",
+    "fields": [
+      {"name": "data", "type": "int"},
+      {"name": "next", "type": "pointer", "target": "Node"},
+      {"name": "prev", "type": "pointer", "target": "Node"}
+    ]
+  },
+  "entry_pointer": "head",
+  "target_function": "check_dll_append",
+  "path": [
+    {"op": "constraint", "expr": "head.prev == NULL"},
+    {"op": "assign", "lhs": "second", "rhs": "head.next"},
+    {"op": "constraint", "expr": "second.prev == head"},
+    {"op": "assign", "lhs": "third", "rhs": "second.next"},
+    {"op": "constraint", "expr": "third.prev == second"},
+    {"op": "constraint", "expr": "third.next == NULL"},
+    {"op": "constraint", "expr": "head.data == 1"},
+    {"op": "constraint", "expr": "second.data == 1"},
+    {"op": "constraint", "expr": "third.data == 1"}
+  ]
+}

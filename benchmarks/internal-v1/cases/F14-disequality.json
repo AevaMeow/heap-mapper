@@ -1,0 +1,4 @@
+[
+  {"op": "constraint", "expr": "p != q"},
+  {"op": "constraint", "expr": "q != NULL"}
+]

@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "name": "Node",
+    "fields": [
+      {"name": "data", "type": "int"},
+      {"name": "next", "type": "pointer", "target": "Node"}
+    ]
+  },
+  "entry_pointer": "head",
+  "target_function": "check_sll_insert_unequal",
+  "path": [
+    {"op": "constraint", "expr": "head.data == 1"},
+    {"op": "assign", "lhs": "middle", "rhs": "head.next"},
+    {"op": "constraint", "expr": "middle.data == 5"},
+    {"op": "assign", "lhs": "tail", "rhs": "middle.next"},
+    {"op": "constraint", "expr": "tail.data == 1"},
+    {"op": "constraint", "expr": "tail.next == NULL"}
+  ]
+}

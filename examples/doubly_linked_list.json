@@ -1,17 +1,19 @@
 {
   "structure": {
-    "name": "Node",
+    "name": "DNode",
     "fields": [
       {"name": "key", "type": "int"},
-      {"name": "next", "type": "pointer", "target": "Node"}
+      {"name": "next", "type": "pointer", "target": "DNode"},
+      {"name": "prev", "type": "pointer", "target": "DNode"}
     ]
   },
   "entry_pointer": "head",
-  "target_function": "inspect_singly_list",
+  "target_function": "inspect_doubly_list",
   "path": [
     {"op": "constraint", "expr": "head != NULL"},
     {"op": "assign", "lhs": "second", "rhs": "head.next"},
     {"op": "constraint", "expr": "second != NULL"},
+    {"op": "assign", "lhs": "second.prev", "rhs": "head"},
     {"op": "constraint", "expr": "second.key == 5"}
   ]
 }

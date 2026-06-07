@@ -1,0 +1,18 @@
+[
+  {"op": "constraint", "expr": "p != NULL"},
+  {"op": "assign", "lhs": "n2", "rhs": "p.next"},
+  {"op": "assign", "lhs": "n3", "rhs": "n2.next"},
+  {"op": "assign", "lhs": "n4", "rhs": "n3.next"},
+  {"op": "assign", "lhs": "n5", "rhs": "n4.next"},
+  {"op": "assign", "lhs": "n6", "rhs": "n5.next"},
+  {"op": "assign", "lhs": "n7", "rhs": "n6.next"},
+  {"op": "constraint", "expr": "n7.next == NULL"},
+  {"op": "assign", "lhs": "cursor", "rhs": "n4"},
+  {"op": "constraint", "expr": "cursor == n4"},
+  {"op": "constraint", "expr": "cursor.key == 44"},
+  {"op": "constraint", "expr": "cursor.next == n5"},
+  {"op": "constraint", "expr": "n3 != cursor"},
+  {"op": "constraint", "expr": "n5 != cursor"},
+  {"op": "constraint", "expr": "p.key == 11"},
+  {"op": "constraint", "expr": "n7.key == 77"}
+]

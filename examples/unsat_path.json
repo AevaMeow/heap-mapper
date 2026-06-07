@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "name": "Node",
+    "fields": [
+      {"name": "key", "type": "int"},
+      {"name": "next", "type": "pointer", "target": "Node"}
+    ]
+  },
+  "entry_pointer": "p",
+  "target_function": "unreachable_target",
+  "path": [
+    {"op": "constraint", "expr": "p == NULL"},
+    {"op": "constraint", "expr": "p != NULL"}
+  ]
+}

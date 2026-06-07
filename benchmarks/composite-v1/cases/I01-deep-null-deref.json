@@ -1,0 +1,15 @@
+[
+  {"op": "constraint", "expr": "p != NULL"},
+  {"op": "assign", "lhs": "n2", "rhs": "p.next"},
+  {"op": "assign", "lhs": "n3", "rhs": "n2.next"},
+  {"op": "assign", "lhs": "n4", "rhs": "n3.next"},
+  {"op": "assign", "lhs": "n5", "rhs": "n4.next"},
+  {"op": "assign", "lhs": "n6", "rhs": "n5.next"},
+  {"op": "assign", "lhs": "n7", "rhs": "n6.next"},
+  {"op": "constraint", "expr": "p.key == 1"},
+  {"op": "constraint", "expr": "n4.key == 4"},
+  {"op": "constraint", "expr": "n7.key == 7"},
+  {"op": "constraint", "expr": "n7.next == NULL"},
+  {"op": "assign", "lhs": "missing", "rhs": "n7.next"},
+  {"op": "deref", "expr": "missing.key"}
+]

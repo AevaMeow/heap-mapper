@@ -1,0 +1,36 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "root",
+  "target_function": "inspect_zigzag_tree",
+  "path": [
+    {"op": "constraint", "expr": "root != NULL"},
+    {"op": "constraint", "expr": "root.right == NULL"},
+    {"op": "assign", "lhs": "n2", "rhs": "root.left"},
+    {"op": "constraint", "expr": "n2.left == NULL"},
+    {"op": "assign", "lhs": "n3", "rhs": "n2.right"},
+    {"op": "constraint", "expr": "n3.right == NULL"},
+    {"op": "assign", "lhs": "n4", "rhs": "n3.left"},
+    {"op": "constraint", "expr": "n4.left == NULL"},
+    {"op": "assign", "lhs": "n5", "rhs": "n4.right"},
+    {"op": "constraint", "expr": "n5.right == NULL"},
+    {"op": "assign", "lhs": "n6", "rhs": "n5.left"},
+    {"op": "constraint", "expr": "n6.left == NULL"},
+    {"op": "assign", "lhs": "n7", "rhs": "n6.right"},
+    {"op": "constraint", "expr": "n7.right == NULL"},
+    {"op": "assign", "lhs": "n8", "rhs": "n7.left"},
+    {"op": "constraint", "expr": "n8.left == NULL"},
+    {"op": "assign", "lhs": "n9", "rhs": "n8.right"},
+    {"op": "constraint", "expr": "n9.left == NULL"},
+    {"op": "constraint", "expr": "n9.right == NULL"},
+    {"op": "constraint", "expr": "root.value == 1"},
+    {"op": "constraint", "expr": "n5.value == 5"},
+    {"op": "constraint", "expr": "n9.value == 9"}
+  ]
+}

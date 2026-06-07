@@ -1,0 +1,34 @@
+{
+  "structure": {
+    "name": "GraphNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "GraphNode"},
+      {"name": "right", "type": "pointer", "target": "GraphNode"}
+    ]
+  },
+  "entry_pointer": "root",
+  "target_function": "inspect_cyclic_graph",
+  "path": [
+    {"op": "constraint", "expr": "root != NULL"},
+    {"op": "assign", "lhs": "n2", "rhs": "root.left"},
+    {"op": "assign", "lhs": "n3", "rhs": "root.right"},
+    {"op": "assign", "lhs": "n4", "rhs": "n2.left"},
+    {"op": "assign", "lhs": "n5", "rhs": "n2.right"},
+    {"op": "assign", "lhs": "n6", "rhs": "n3.left"},
+    {"op": "assign", "lhs": "n7", "rhs": "n3.right"},
+    {"op": "assign", "lhs": "n8", "rhs": "n4.left"},
+    {"op": "assign", "lhs": "n9", "rhs": "n7.right"},
+    {"op": "assign", "lhs": "n8.right", "rhs": "root"},
+    {"op": "assign", "lhs": "n9.left", "rhs": "n2"},
+    {"op": "assign", "lhs": "n5.left", "rhs": "n6"},
+    {"op": "assign", "lhs": "back_to_root", "rhs": "n8.right"},
+    {"op": "assign", "lhs": "back_to_left", "rhs": "n9.left"},
+    {"op": "constraint", "expr": "back_to_root == root"},
+    {"op": "constraint", "expr": "back_to_left == n2"},
+    {"op": "constraint", "expr": "n5.left == n6"},
+    {"op": "constraint", "expr": "root.value == 1"},
+    {"op": "constraint", "expr": "n8.value == 8"},
+    {"op": "constraint", "expr": "n9.value == 9"}
+  ]
+}

@@ -7,11 +7,13 @@
     ]
   },
   "entry_pointer": "head",
-  "target_function": "inspect_singly_list",
+  "target_function": "inspect_cycle",
   "path": [
     {"op": "constraint", "expr": "head != NULL"},
     {"op": "assign", "lhs": "second", "rhs": "head.next"},
     {"op": "constraint", "expr": "second != NULL"},
-    {"op": "constraint", "expr": "second.key == 5"}
+    {"op": "assign", "lhs": "second.next", "rhs": "head"},
+    {"op": "constraint", "expr": "head.key == 1"},
+    {"op": "constraint", "expr": "second.key == 2"}
   ]
 }

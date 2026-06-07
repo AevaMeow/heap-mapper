@@ -1,0 +1,8 @@
+{
+  "name": "heap-mapper-all-v1",
+  "includes": [
+    "../internal-v1/manifest.json",
+    "../composite-v1/manifest.json",
+    "../external-v1/manifest.json"
+  ]
+}

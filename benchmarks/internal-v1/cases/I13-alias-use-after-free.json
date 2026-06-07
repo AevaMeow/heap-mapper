@@ -1,0 +1,6 @@
+[
+  {"op": "constraint", "expr": "p != NULL"},
+  {"op": "constraint", "expr": "q == p"},
+  {"op": "free", "var": "q"},
+  {"op": "deref", "expr": "p.key"}
+]

@@ -1,0 +1,39 @@
+{
+  "structure": {
+    "name": "DNode",
+    "fields": [
+      {"name": "key", "type": "int"},
+      {"name": "next", "type": "pointer", "target": "DNode"},
+      {"name": "prev", "type": "pointer", "target": "DNode"}
+    ]
+  },
+  "entry_pointer": "head",
+  "target_function": "inspect_doubly_reverse",
+  "path": [
+    {"op": "constraint", "expr": "head != NULL"},
+    {"op": "constraint", "expr": "head.prev == NULL"},
+    {"op": "assign", "lhs": "n2", "rhs": "head.next"},
+    {"op": "assign", "lhs": "n2.prev", "rhs": "head"},
+    {"op": "assign", "lhs": "n3", "rhs": "n2.next"},
+    {"op": "assign", "lhs": "n3.prev", "rhs": "n2"},
+    {"op": "assign", "lhs": "n4", "rhs": "n3.next"},
+    {"op": "assign", "lhs": "n4.prev", "rhs": "n3"},
+    {"op": "assign", "lhs": "n5", "rhs": "n4.next"},
+    {"op": "assign", "lhs": "n5.prev", "rhs": "n4"},
+    {"op": "assign", "lhs": "n6", "rhs": "n5.next"},
+    {"op": "assign", "lhs": "n6.prev", "rhs": "n5"},
+    {"op": "assign", "lhs": "n7", "rhs": "n6.next"},
+    {"op": "assign", "lhs": "n7.prev", "rhs": "n6"},
+    {"op": "assign", "lhs": "tail", "rhs": "n7.next"},
+    {"op": "assign", "lhs": "tail.prev", "rhs": "n7"},
+    {"op": "constraint", "expr": "tail.next == NULL"},
+    {"op": "assign", "lhs": "r7", "rhs": "tail.prev"},
+    {"op": "assign", "lhs": "r6", "rhs": "r7.prev"},
+    {"op": "assign", "lhs": "r5", "rhs": "r6.prev"},
+    {"op": "assign", "lhs": "r4", "rhs": "r5.prev"},
+    {"op": "constraint", "expr": "r7 == n7"},
+    {"op": "constraint", "expr": "r4 == n4"},
+    {"op": "constraint", "expr": "head.key == 8"},
+    {"op": "constraint", "expr": "tail.key == 1"}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "root",
+  "target_function": "inspect_left_child",
+  "path": [
+    {"op": "constraint", "expr": "root != NULL"},
+    {"op": "assign", "lhs": "child", "rhs": "root.left"},
+    {"op": "constraint", "expr": "child != NULL"},
+    {"op": "constraint", "expr": "root.right == NULL"},
+    {"op": "constraint", "expr": "child.value == 4"}
+  ]
+}

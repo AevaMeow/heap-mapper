@@ -1,0 +1,21 @@
+[
+  {"op": "constraint", "expr": "p != NULL"},
+  {"op": "assign", "lhs": "n2", "rhs": "p.next"},
+  {"op": "assign", "lhs": "n3", "rhs": "n2.next"},
+  {"op": "assign", "lhs": "n4", "rhs": "n3.next"},
+  {"op": "assign", "lhs": "n5", "rhs": "n4.next"},
+  {"op": "assign", "lhs": "n6", "rhs": "n5.next"},
+  {"op": "assign", "lhs": "n7", "rhs": "n6.next"},
+  {"op": "assign", "lhs": "n7.next", "rhs": "n3"},
+  {"op": "assign", "lhs": "loop1", "rhs": "n7.next"},
+  {"op": "assign", "lhs": "loop2", "rhs": "loop1.next"},
+  {"op": "assign", "lhs": "loop3", "rhs": "loop2.next"},
+  {"op": "assign", "lhs": "loop4", "rhs": "loop3.next"},
+  {"op": "assign", "lhs": "loop5", "rhs": "loop4.next"},
+  {"op": "constraint", "expr": "loop1 == n3"},
+  {"op": "constraint", "expr": "loop5 == n7"},
+  {"op": "constraint", "expr": "loop5.next == n3"},
+  {"op": "constraint", "expr": "p.key == 100"},
+  {"op": "constraint", "expr": "n3.key == 300"},
+  {"op": "constraint", "expr": "n7.key == 700"}
+]

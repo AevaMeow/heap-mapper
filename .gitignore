@@ -1,43 +1,34 @@
-# OS files
-.DS_Store
-Thumbs.db
+target/
+dependency-reduced-pom.xml
+*.class
+*.jar
+*.war
+*.ear
 
-# Editors / IDE
-.vscode/
 .idea/
+.vscode/
+.claude/
+.codex/
+.agents/
+*.iml
 *.swp
 *.swo
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
+generated/
+out/
+output/
+reports/*
+!reports/all-v1/
+reports/all-v1/*
+!reports/all-v1/results.csv
+!reports/all-v1/summary.md
 
-.venv/
-venv/
-env/
-ENV/
-
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-
-# Python packaging
-build/
-dist/
-*.egg-info/
-
-# C/C++ build files
 cmake-build-*/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
 compile_commands.json
-
-# Compiled binaries / objects
 *.o
 *.obj
 *.a
@@ -48,16 +39,6 @@ compile_commands.json
 *.exe
 *.out
 
-# Generated test files
-generated/
-out/
-output/
-reports/
-
-# Logs
-*.log
-
-# Sanitizer / coverage artifacts
 *.gcda
 *.gcno
 *.gcov
@@ -65,7 +46,12 @@ asan.log*
 ubsan.log*
 lsan.log*
 
-# Temporary files
+*.log
 tmp/
 temp/
 *.tmp
+
+.DS_Store
+Thumbs.db
+
+/test/

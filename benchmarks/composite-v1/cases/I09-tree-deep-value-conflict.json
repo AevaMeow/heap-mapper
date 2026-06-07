@@ -1,0 +1,31 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "root",
+  "target_function": "reject_tree_value",
+  "path": [
+    {"op": "constraint", "expr": "root != NULL"},
+    {"op": "assign", "lhs": "left", "rhs": "root.left"},
+    {"op": "assign", "lhs": "right", "rhs": "root.right"},
+    {"op": "assign", "lhs": "ll", "rhs": "left.left"},
+    {"op": "assign", "lhs": "lr", "rhs": "left.right"},
+    {"op": "assign", "lhs": "rl", "rhs": "right.left"},
+    {"op": "assign", "lhs": "rr", "rhs": "right.right"},
+    {"op": "constraint", "expr": "root.value == 8"},
+    {"op": "constraint", "expr": "left.value == 4"},
+    {"op": "constraint", "expr": "right.value == 12"},
+    {"op": "constraint", "expr": "ll.value == 2"},
+    {"op": "constraint", "expr": "lr.value == 6"},
+    {"op": "constraint", "expr": "rl.value == 10"},
+    {"op": "constraint", "expr": "rr.value == 14"},
+    {"op": "constraint", "expr": "rr.left == NULL"},
+    {"op": "constraint", "expr": "rr.right == NULL"},
+    {"op": "constraint", "expr": "rr.value == 99"}
+  ]
+}

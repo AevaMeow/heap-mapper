@@ -1,0 +1,6 @@
+[
+  {"op": "constraint", "expr": "p != NULL"},
+  {"op": "constraint", "expr": "p.next == NULL"},
+  {"op": "assign", "lhs": "x", "rhs": "p.next"},
+  {"op": "constraint", "expr": "x != NULL"}
+]

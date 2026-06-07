@@ -1,0 +1,31 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "root",
+  "target_function": "inspect_shared_subtree",
+  "path": [
+    {"op": "constraint", "expr": "root != NULL"},
+    {"op": "assign", "lhs": "left", "rhs": "root.left"},
+    {"op": "assign", "lhs": "right", "rhs": "root.right"},
+    {"op": "assign", "lhs": "shared", "rhs": "left.left"},
+    {"op": "assign", "lhs": "left_right", "rhs": "left.right"},
+    {"op": "assign", "lhs": "right_left", "rhs": "right.left"},
+    {"op": "assign", "lhs": "right.right", "rhs": "shared"},
+    {"op": "assign", "lhs": "shared_left", "rhs": "shared.left"},
+    {"op": "assign", "lhs": "shared_right", "rhs": "shared.right"},
+    {"op": "assign", "lhs": "alias", "rhs": "right.right"},
+    {"op": "constraint", "expr": "alias == shared"},
+    {"op": "constraint", "expr": "left_right != right_left"},
+    {"op": "constraint", "expr": "shared.value == 5"},
+    {"op": "constraint", "expr": "shared_left.value == 3"},
+    {"op": "constraint", "expr": "shared_right.value == 7"},
+    {"op": "constraint", "expr": "alias.left == shared_left"},
+    {"op": "constraint", "expr": "alias.right == shared_right"}
+  ]
+}

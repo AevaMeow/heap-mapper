@@ -1,0 +1,21 @@
+[
+  {"op": "constraint", "expr": "p != NULL"},
+  {"op": "constraint", "expr": "p.key == 10"},
+  {"op": "assign", "lhs": "n2", "rhs": "p.next"},
+  {"op": "constraint", "expr": "n2.key == 20"},
+  {"op": "assign", "lhs": "n3", "rhs": "n2.next"},
+  {"op": "constraint", "expr": "n3.key == 30"},
+  {"op": "assign", "lhs": "n4", "rhs": "n3.next"},
+  {"op": "constraint", "expr": "n4.key == 40"},
+  {"op": "assign", "lhs": "n5", "rhs": "n4.next"},
+  {"op": "constraint", "expr": "n5.key == 50"},
+  {"op": "assign", "lhs": "n6", "rhs": "n5.next"},
+  {"op": "constraint", "expr": "n6.key == 60"},
+  {"op": "assign", "lhs": "n7", "rhs": "n6.next"},
+  {"op": "constraint", "expr": "n7.key == 70"},
+  {"op": "assign", "lhs": "n8", "rhs": "n7.next"},
+  {"op": "constraint", "expr": "n8.key == 80"},
+  {"op": "constraint", "expr": "n8.next == NULL"},
+  {"op": "deref", "expr": "n4.key"},
+  {"op": "constraint", "expr": "p != n8"}
+]

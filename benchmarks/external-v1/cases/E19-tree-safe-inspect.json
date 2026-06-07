@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"},
+      {"name": "parent", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "node",
+  "target_function": "inspect_tree_safe_path",
+  "path": [
+    {"op": "constraint", "expr": "node != NULL"},
+    {"op": "constraint", "expr": "node.value == 1"},
+    {"op": "assign", "lhs": "left", "rhs": "node.left"},
+    {"op": "constraint", "expr": "left != NULL"},
+    {"op": "constraint", "expr": "left.value == 42"},
+    {"op": "constraint", "expr": "node.parent == NULL"}
+  ]
+}

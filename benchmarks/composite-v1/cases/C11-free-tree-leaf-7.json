@@ -1,0 +1,29 @@
+{
+  "structure": {
+    "name": "TreeNode",
+    "fields": [
+      {"name": "value", "type": "int"},
+      {"name": "left", "type": "pointer", "target": "TreeNode"},
+      {"name": "right", "type": "pointer", "target": "TreeNode"}
+    ]
+  },
+  "entry_pointer": "root",
+  "target_function": "release_one_leaf",
+  "path": [
+    {"op": "constraint", "expr": "root != NULL"},
+    {"op": "assign", "lhs": "left", "rhs": "root.left"},
+    {"op": "assign", "lhs": "right", "rhs": "root.right"},
+    {"op": "assign", "lhs": "ll", "rhs": "left.left"},
+    {"op": "assign", "lhs": "lr", "rhs": "left.right"},
+    {"op": "assign", "lhs": "rl", "rhs": "right.left"},
+    {"op": "assign", "lhs": "rr", "rhs": "right.right"},
+    {"op": "constraint", "expr": "root.value == 20"},
+    {"op": "constraint", "expr": "left.value == 10"},
+    {"op": "constraint", "expr": "right.value == 30"},
+    {"op": "constraint", "expr": "ll.value == 5"},
+    {"op": "constraint", "expr": "rr.value == 35"},
+    {"op": "assign", "lhs": "victim", "rhs": "ll"},
+    {"op": "constraint", "expr": "victim == left.left"},
+    {"op": "free", "var": "victim"}
+  ]
+}

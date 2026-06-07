@@ -1,0 +1,187 @@
+{
+  "name": "heap-mapper-composite-v1",
+  "cases": [
+    {
+      "id": "C01-singly-list-8",
+      "category": "composite-singly-list",
+      "input": "cases/C01-singly-list-8.json",
+      "expected": "safe",
+      "expected_nodes": 8
+    },
+    {
+      "id": "C02-singly-alias-7",
+      "category": "composite-singly-list",
+      "input": "cases/C02-singly-alias-7.json",
+      "expected": "safe",
+      "expected_nodes": 7
+    },
+    {
+      "id": "C03-doubly-list-6",
+      "category": "composite-doubly-list",
+      "input": "cases/C03-doubly-list-6.json",
+      "expected": "safe",
+      "expected_nodes": 6
+    },
+    {
+      "id": "C04-doubly-reverse-8",
+      "category": "composite-doubly-list",
+      "input": "cases/C04-doubly-reverse-8.json",
+      "expected": "safe",
+      "expected_nodes": 8
+    },
+    {
+      "id": "C05-cycle-6",
+      "category": "composite-cycle",
+      "input": "cases/C05-cycle-6.json",
+      "expected": "safe",
+      "expected_nodes": 6
+    },
+    {
+      "id": "C06-lollipop-cycle-7",
+      "category": "composite-cycle",
+      "input": "cases/C06-lollipop-cycle-7.json",
+      "expected": "safe",
+      "expected_nodes": 7
+    },
+    {
+      "id": "C07-full-tree-7",
+      "category": "composite-tree",
+      "input": "cases/C07-full-tree-7.json",
+      "expected": "safe",
+      "expected_nodes": 7
+    },
+    {
+      "id": "C08-full-tree-15",
+      "category": "composite-tree",
+      "input": "cases/C08-full-tree-15.json",
+      "expected": "safe",
+      "expected_nodes": 15
+    },
+    {
+      "id": "C09-shared-subtree-dag-8",
+      "category": "composite-tree-aliasing",
+      "input": "cases/C09-shared-subtree-dag-8.json",
+      "expected": "safe",
+      "expected_nodes": 8
+    },
+    {
+      "id": "C10-sparse-zigzag-tree-9",
+      "category": "composite-tree",
+      "input": "cases/C10-sparse-zigzag-tree-9.json",
+      "expected": "safe",
+      "expected_nodes": 9
+    },
+    {
+      "id": "C11-free-tree-leaf-7",
+      "category": "composite-memory-safety",
+      "input": "cases/C11-free-tree-leaf-7.json",
+      "expected": "safe",
+      "expected_nodes": 7
+    },
+    {
+      "id": "C12-cyclic-tree-graph-9",
+      "category": "composite-graph",
+      "input": "cases/C12-cyclic-tree-graph-9.json",
+      "expected": "safe",
+      "expected_nodes": 9
+    },
+    {
+      "id": "I01-deep-null-deref",
+      "category": "composite-null-dereference",
+      "input": "cases/I01-deep-null-deref.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference of NULL pointer missing"
+    },
+    {
+      "id": "I02-deep-numeric-conflict",
+      "category": "composite-constraint-conflict",
+      "input": "cases/I02-deep-numeric-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting numeric constraint for n8.key"
+    },
+    {
+      "id": "I03-deep-pointer-conflict",
+      "category": "composite-constraint-conflict",
+      "input": "cases/I03-deep-pointer-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "n7.next has conflicting pointer values"
+    },
+    {
+      "id": "I04-cycle-tail-conflict",
+      "category": "composite-cycle",
+      "input": "cases/I04-cycle-tail-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "n6.next has conflicting pointer values"
+    },
+    {
+      "id": "I05-deep-double-free-alias",
+      "category": "composite-double-free",
+      "input": "cases/I05-deep-double-free-alias.json",
+      "expected": "violation",
+      "expected_diagnostic": "double free of pointer n4"
+    },
+    {
+      "id": "I06-deep-use-after-free-alias",
+      "category": "composite-use-after-free",
+      "input": "cases/I06-deep-use-after-free-alias.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer n5"
+    },
+    {
+      "id": "I07-doubly-backlink-conflict",
+      "category": "composite-doubly-list",
+      "input": "cases/I07-doubly-backlink-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "n5.prev has conflicting pointer values"
+    },
+    {
+      "id": "I08-doubly-use-after-free",
+      "category": "composite-use-after-free",
+      "input": "cases/I08-doubly-use-after-free.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer back"
+    },
+    {
+      "id": "I09-tree-deep-value-conflict",
+      "category": "composite-tree",
+      "input": "cases/I09-tree-deep-value-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting numeric constraint for rr.value"
+    },
+    {
+      "id": "I10-tree-alias-inequality",
+      "category": "composite-tree-aliasing",
+      "input": "cases/I10-tree-alias-inequality.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting pointer inequality constraints"
+    },
+    {
+      "id": "I11-tree-child-conflict",
+      "category": "composite-tree",
+      "input": "cases/I11-tree-child-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "rr.left has conflicting pointer values"
+    },
+    {
+      "id": "I12-shared-subtree-use-after-free",
+      "category": "composite-tree-aliasing",
+      "input": "cases/I12-shared-subtree-use-after-free.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer via_right"
+    },
+    {
+      "id": "S01-singly-list-50",
+      "category": "scale-singly-list",
+      "input": "cases/S01-singly-list-50.json",
+      "expected": "safe",
+      "expected_nodes": 50
+    },
+    {
+      "id": "S02-binary-tree-50",
+      "category": "scale-binary-tree",
+      "input": "cases/S02-binary-tree-50.json",
+      "expected": "safe",
+      "expected_nodes": 50
+    }
+  ]
+}

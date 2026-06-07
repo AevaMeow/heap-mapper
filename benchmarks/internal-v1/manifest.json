@@ -1,0 +1,201 @@
+{
+  "name": "heap-mapper-internal-v1",
+  "cases": [
+    {
+      "id": "F01-empty-list",
+      "category": "singly-list",
+      "input": "cases/F01-empty-list.json",
+      "expected": "safe",
+      "expected_nodes": 0
+    },
+    {
+      "id": "F02-one-node",
+      "category": "singly-list",
+      "input": "cases/F02-one-node.json",
+      "expected": "safe",
+      "expected_nodes": 1
+    },
+    {
+      "id": "F03-tail-null",
+      "category": "singly-list",
+      "input": "cases/F03-tail-null.json",
+      "expected": "safe",
+      "expected_nodes": 1
+    },
+    {
+      "id": "F04-two-nodes",
+      "category": "singly-list",
+      "input": "cases/F04-two-nodes.json",
+      "expected": "safe",
+      "expected_nodes": 2
+    },
+    {
+      "id": "F05-three-nodes",
+      "category": "singly-list",
+      "input": "cases/F05-three-nodes.json",
+      "expected": "safe",
+      "expected_nodes": 3
+    },
+    {
+      "id": "F06-live-deref",
+      "category": "memory-safety",
+      "input": "cases/F06-live-deref.json",
+      "expected": "safe",
+      "expected_nodes": 1
+    },
+    {
+      "id": "F07-free-null",
+      "category": "memory-safety",
+      "input": "cases/F07-free-null.json",
+      "expected": "safe",
+      "expected_nodes": 0
+    },
+    {
+      "id": "F08-free-live",
+      "category": "memory-safety",
+      "input": "cases/F08-free-live.json",
+      "expected": "safe",
+      "expected_nodes": 1
+    },
+    {
+      "id": "F09-cycle",
+      "category": "cyclic-list",
+      "input": "../../examples/circular_list.json",
+      "expected": "safe",
+      "expected_nodes": 2
+    },
+    {
+      "id": "F10-doubly-linked",
+      "category": "doubly-linked-list",
+      "input": "../../examples/doubly_linked_list.json",
+      "expected": "safe",
+      "expected_nodes": 2
+    },
+    {
+      "id": "F11-binary-tree",
+      "category": "binary-tree",
+      "input": "../../examples/binary_tree.json",
+      "expected": "safe",
+      "expected_nodes": 3
+    },
+    {
+      "id": "F12-tree-left-child",
+      "category": "binary-tree",
+      "input": "cases/F12-tree-left-child.json",
+      "expected": "safe",
+      "expected_nodes": 2
+    },
+    {
+      "id": "F13-alias",
+      "category": "aliasing",
+      "input": "cases/F13-alias.json",
+      "expected": "safe",
+      "expected_nodes": 1
+    },
+    {
+      "id": "F14-disequality",
+      "category": "aliasing",
+      "input": "cases/F14-disequality.json",
+      "expected": "safe",
+      "expected_nodes": 2
+    },
+    {
+      "id": "I01-null-field-read",
+      "category": "null-dereference",
+      "input": "cases/I01-null-field-read.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference of NULL pointer p"
+    },
+    {
+      "id": "I02-explicit-null-deref",
+      "category": "null-dereference",
+      "input": "cases/I02-explicit-null-deref.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference of NULL pointer p"
+    },
+    {
+      "id": "I03-variable-nullability",
+      "category": "constraint-conflict",
+      "input": "cases/I03-variable-nullability.json",
+      "expected": "unsat",
+      "expected_diagnostic": "p is both NULL and non-NULL"
+    },
+    {
+      "id": "I04-field-nullability",
+      "category": "constraint-conflict",
+      "input": "cases/I04-field-nullability.json",
+      "expected": "unsat",
+      "expected_diagnostic": "x is both NULL and non-NULL"
+    },
+    {
+      "id": "I05-equality-conflict",
+      "category": "aliasing",
+      "input": "cases/I05-equality-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting pointer equality constraints"
+    },
+    {
+      "id": "I06-inequality-conflict",
+      "category": "aliasing",
+      "input": "cases/I06-inequality-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting pointer inequality constraints"
+    },
+    {
+      "id": "I07-numeric-conflict",
+      "category": "constraint-conflict",
+      "input": "cases/I07-numeric-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting numeric constraint"
+    },
+    {
+      "id": "I08-explicit-use-after-free",
+      "category": "use-after-free",
+      "input": "../../examples/use_after_free.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer p"
+    },
+    {
+      "id": "I09-numeric-use-after-free",
+      "category": "use-after-free",
+      "input": "cases/I09-numeric-use-after-free.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer p"
+    },
+    {
+      "id": "I10-double-free",
+      "category": "double-free",
+      "input": "cases/I10-double-free.json",
+      "expected": "violation",
+      "expected_diagnostic": "double free of pointer p"
+    },
+    {
+      "id": "I11-pointer-field-conflict",
+      "category": "constraint-conflict",
+      "input": "cases/I11-pointer-field-conflict.json",
+      "expected": "unsat",
+      "expected_diagnostic": "p.next has conflicting pointer values"
+    },
+    {
+      "id": "I12-pointer-use-after-free",
+      "category": "use-after-free",
+      "input": "cases/I12-pointer-use-after-free.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer p"
+    },
+    {
+      "id": "I13-alias-use-after-free",
+      "category": "use-after-free",
+      "input": "cases/I13-alias-use-after-free.json",
+      "expected": "violation",
+      "expected_diagnostic": "dereference after free of pointer p"
+    },
+    {
+      "id": "I14-self-inequality",
+      "category": "aliasing",
+      "input": "cases/I14-self-inequality.json",
+      "expected": "unsat",
+      "expected_diagnostic": "conflicting pointer inequality constraints"
+    }
+  ]
+}

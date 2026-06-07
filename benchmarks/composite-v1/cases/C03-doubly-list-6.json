@@ -1,0 +1,32 @@
+{
+  "structure": {
+    "name": "DNode",
+    "fields": [
+      {"name": "key", "type": "int"},
+      {"name": "next", "type": "pointer", "target": "DNode"},
+      {"name": "prev", "type": "pointer", "target": "DNode"}
+    ]
+  },
+  "entry_pointer": "head",
+  "target_function": "inspect_doubly_six",
+  "path": [
+    {"op": "constraint", "expr": "head != NULL"},
+    {"op": "constraint", "expr": "head.prev == NULL"},
+    {"op": "assign", "lhs": "n2", "rhs": "head.next"},
+    {"op": "assign", "lhs": "n2.prev", "rhs": "head"},
+    {"op": "assign", "lhs": "n3", "rhs": "n2.next"},
+    {"op": "assign", "lhs": "n3.prev", "rhs": "n2"},
+    {"op": "assign", "lhs": "n4", "rhs": "n3.next"},
+    {"op": "assign", "lhs": "n4.prev", "rhs": "n3"},
+    {"op": "assign", "lhs": "n5", "rhs": "n4.next"},
+    {"op": "assign", "lhs": "n5.prev", "rhs": "n4"},
+    {"op": "assign", "lhs": "n6", "rhs": "n5.next"},
+    {"op": "assign", "lhs": "n6.prev", "rhs": "n5"},
+    {"op": "constraint", "expr": "n6.next == NULL"},
+    {"op": "constraint", "expr": "n3.prev == n2"},
+    {"op": "constraint", "expr": "n5.next == n6"},
+    {"op": "constraint", "expr": "head.key == 1"},
+    {"op": "constraint", "expr": "n3.key == 3"},
+    {"op": "constraint", "expr": "n6.key == 6"}
+  ]
+}
