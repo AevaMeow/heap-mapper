@@ -3,6 +3,7 @@ package heapmapper.codegen;
 import heapmapper.model.FieldKey;
 import heapmapper.model.FieldModel;
 import heapmapper.model.MappingResult;
+import heapmapper.model.ResultStatus;
 import heapmapper.model.StructureModel;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public final class CCodeGenerator {
         Collections.sort(addresses);
 
         var lines = new ArrayList<String>();
+        lines.add("#include <stdio.h>");
         lines.add("#include <stdlib.h>");
         lines.add("");
         lines.add("typedef struct " + structName + " {");
@@ -67,15 +69,36 @@ public final class CCodeGenerator {
         lines.add("    " + structName + " *" + result.rootVariable()
                 + " = " + pointerLiteral(rootVal, addresses) + ";");
         lines.add("");
-        lines.add("    " + result.targetFunction() + "(" + result.rootVariable() + ");");
 
-        if (!addresses.isEmpty()) {
-            lines.add("");
+        if (result.status() == ResultStatus.VIOLATION) {
             var reversed = new ArrayList<>(addresses);
             Collections.reverse(reversed);
             for (int addr : reversed) {
-                if (!"freed".equals(result.nodeStates().get(addr))) {
+                if ("freed".equals(result.nodeStates().get(addr))) {
                     lines.add("    free(n" + addr + ");");
+                }
+            }
+            lines.add("    puts(\"HEAP_MAPPER_TARGET_REACHED\");");
+            lines.add("");
+        }
+
+        lines.add("    " + result.targetFunction() + "(" + result.rootVariable() + ");");
+
+        if (result.status() == ResultStatus.SAFE) {
+            lines.add("    puts(\"HEAP_MAPPER_TARGET_REACHED\");");
+        }
+
+        if (!addresses.isEmpty()) {
+            var reversed = new ArrayList<>(addresses);
+            Collections.reverse(reversed);
+            boolean hasLive = reversed.stream()
+                    .anyMatch(addr -> !"freed".equals(result.nodeStates().get(addr)));
+            if (hasLive) {
+                lines.add("");
+                for (int addr : reversed) {
+                    if (!"freed".equals(result.nodeStates().get(addr))) {
+                        lines.add("    free(n" + addr + ");");
+                    }
                 }
             }
         }

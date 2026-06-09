@@ -26,6 +26,8 @@ class CodegenSpec extends Specification {
         code.contains("n2->key = 5;")
         code.contains("Node *p = n1;")
         code.contains("target_function(p);")
+        code.contains('puts("HEAP_MAPPER_TARGET_REACHED")')
+        code.indexOf('puts("HEAP_MAPPER_TARGET_REACHED")') > code.indexOf("target_function(p);")
     }
 
     def "generates a doubly linked list with next and prev links"() {
@@ -160,7 +162,10 @@ class CodegenSpec extends Specification {
         result.status().name() == "VIOLATION"
         code.contains("Node *n1 = malloc(sizeof(Node));")
         code.contains("target_function(p);")
-        !code.contains("free(n1);")
+        code.contains("free(n1);")
+        code.indexOf("free(n1);") < code.indexOf("target_function(p);")
+        code.contains('puts("HEAP_MAPPER_TARGET_REACHED")')
+        code.indexOf('puts("HEAP_MAPPER_TARGET_REACHED")') < code.indexOf("target_function(p);")
     }
 
     private static String generate(String json) {

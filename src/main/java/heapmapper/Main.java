@@ -199,7 +199,8 @@ public final class Main {
         }
 
         if (result.status() == ResultStatus.VIOLATION) {
-            if (matchesViolation(result.violationKind(), process.output())) {
+            if (containsMarker(process.output())
+                    && matchesViolation(result.violationKind(), process.output())) {
                 System.out.println(
                         "test confirmed " + violationName(result.violationKind()));
                 return 0;
@@ -208,7 +209,9 @@ public final class Main {
             return 1;
         }
 
-        if (process.exitCode() == 0 && !containsSanitizerReport(process.output())) {
+        if (process.exitCode() == 0
+                && containsMarker(process.output())
+                && !containsSanitizerReport(process.output())) {
             System.out.println("test passed");
             return 0;
         }
@@ -247,6 +250,10 @@ public final class Main {
         } finally {
             Files.deleteIfExists(outputFile);
         }
+    }
+
+    private static boolean containsMarker(String output) {
+        return output.contains("HEAP_MAPPER_TARGET_REACHED");
     }
 
     private static boolean containsSanitizerReport(String output) {
