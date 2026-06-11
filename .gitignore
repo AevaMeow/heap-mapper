@@ -7,9 +7,6 @@ dependency-reduced-pom.xml
 
 .idea/
 .vscode/
-.claude/
-.codex/
-.agents/
 *.iml
 *.swp
 *.swo
